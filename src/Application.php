@@ -55,6 +55,8 @@ class Application extends BaseApplication {
     }
 
     public function bootstrap() {
+        $this->addPlugin('Migrations');
+
         parent::bootstrap();
     }
 
