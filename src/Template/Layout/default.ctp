@@ -61,7 +61,7 @@ use Cake\Core\Configure;
         <?= $this->fetch('content') ?>
         </div>
         <footer>
-            <?= $this->Html->image('loading.gif',["id"=>"loading-image","width"=>"50px"]) ?>
+            <?= $this->Html->image('loading.gif',["id"=>"loading-image"]) ?>
         </footer>
     </body>
 </html>

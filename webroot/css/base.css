@@ -453,7 +453,7 @@ input[type="button"] {
     position:absolute;
     top:calc(50% - 25px);
     left:calc(50% - 25px);
-    width:50px;
+    width:30%;
 }
 
 /**
