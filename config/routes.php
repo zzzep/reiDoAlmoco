@@ -53,6 +53,8 @@ Router::scope('/api/', function (RouteBuilder $routes) {
     $routes->get('/email-votes', ['controller' => 'Api', 'action' => 'votes']);
     $routes->get('/email-list', ['controller' => 'Api', 'action' => 'list']);
     $routes->get('/win-of-the-week', ['controller' => 'Api', 'action' => 'winOfTheWeek']);
+    $routes->get('/lasts-winners-of-the-week', ['controller' => 'Api', 'action' => 'lastsWinners']);
+    $routes->get('/worst-kings', ['controller' => 'Api', 'action' => 'worstKings']);
     $routes->get('/win-of-the-day', ['controller' => 'Api', 'action' => 'winOfTheDay']);
     $routes->get('/valid-hour', ['controller' => 'Api', 'action' => 'validHour']);
     $routes->get('/last-winner', ['controller' => 'Api', 'action' => 'validHour']);
@@ -70,8 +72,9 @@ Router::scope('/', function (RouteBuilder $routes) {
      * its action called 'display', and we pass a param to select the view file
      * to use (in this case, src/Template/Pages/home.ctp)...
      */
-    $routes->connect('/', ['controller' => 'Pages', 'action' => 'display', 'home']);
-    $routes->connect('/create-email', ['controller' => 'Pages', 'action' => 'display', 'createEmail']);
+    $routes->connect('/', ['controller' => 'App', 'action' => 'home']);
+    $routes->connect('/create-email', ['controller' => 'App', 'action' => 'createEmail']);
+    $routes->connect('/statistics', ['controller' => 'App', 'action' => 'statistics']);
 
    /**
      * Connect catchall routes for all controllers.

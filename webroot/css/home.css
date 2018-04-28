@@ -17,6 +17,25 @@
     color: #404041;
 }
 
+.winner {
+    font-weight: bold;
+    text-align: center;
+    padding: 10px;
+    font-size: 25px;
+    vertical-align: middle;
+}
+
+.img-winner {
+    max-width: 200px;
+    max-height: 200px;
+    min-height: 200px;
+}
+.img-competitor {
+    max-width: 100px;
+    max-height: 100px;
+    min-height: 100px;
+}
+
 a {
     color: #0071BC;
     -webkit-transition: all 0.2s;

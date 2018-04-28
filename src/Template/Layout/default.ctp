@@ -13,6 +13,8 @@
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 
+use Cake\Routing\Router;
+
 $cakeDescription = 'CakePHP: the rapid development php framework';
 ?>
 <!DOCTYPE html>
@@ -28,6 +30,11 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 
     <?= $this->Html->css('base.css') ?>
     <?= $this->Html->css('style.css') ?>
+    <?= $this->Html->css('bootstrap.min.css') ?>
+    <?= $this->Html->css('bootstrap-grid.min.css') ?>
+    <?= $this->Html->css('bootstrap-reboot.min.css') ?>
+    
+    <?= $this->Html->script('jquery-3.3.1.min.js') ?>
 
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>
@@ -37,13 +44,14 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     <nav class="top-bar expanded" data-topbar role="navigation">
         <ul class="title-area large-3 medium-4 columns">
             <li class="name">
-                <h1><a href=""><?= $this->fetch('title') ?></a></h1>
+                <h1><a href="#"><?= env("TITLE") ?></a></h1>
             </li>
         </ul>
         <div class="top-bar-section">
             <ul class="right">
-                <li><a target="_blank" href="https://book.cakephp.org/3.0/">Documentation</a></li>
-                <li><a target="_blank" href="https://api.cakephp.org/3.0/">API</a></li>
+                <li><a target="_self" href="<?php echo Router::url('/', true); ?>">Home</a></li>
+                <li><a target="_self" href="<?php echo Router::url('/statistics', true); ?>">Relatórios</a></li>
+                <li><a target="_self" href="<?php echo Router::url('/create-email', true); ?>">Cadastro de Email</a></li>
             </ul>
         </div>
     </nav>

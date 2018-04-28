@@ -23,6 +23,10 @@ class CreateEmailsList extends AbstractMigration
             'limit' => 255,
             'null' => false,
         ]);
+        $table->addColumn('image', 'text', [
+            'default' => null,
+            'null' => true,
+        ]);
         $table->addColumn('created', 'datetime', [
             'default' => null,
             'null' => false,
