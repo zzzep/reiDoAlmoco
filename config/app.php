@@ -220,7 +220,7 @@ return [
     'Email' => [
         'default' => [
             'transport' => 'default',
-            'from' => 'you@localhost',
+            'from' => 'gfechio-rei-do-almoco@hotmail.com',
             //'charset' => 'utf-8',
             //'headerCharset' => 'utf-8',
         ],

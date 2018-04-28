@@ -1,7 +1,7 @@
 <?php
 use Migrations\AbstractMigration;
 
-class CreateEmailsList extends AbstractMigration
+class CreateEmailWinners extends AbstractMigration
 {
     /**
      * Change Method.
@@ -12,15 +12,19 @@ class CreateEmailsList extends AbstractMigration
      */
     public function change()
     {
-        $table = $this->table('emails_list');
-        $table->addColumn('name', 'string', [
+        $table = $this->table('email_winners');
+        $table->addColumn('win_date', 'string', [
             'default' => null,
             'limit' => 255,
             'null' => false,
         ]);
-        $table->addColumn('email', 'string', [
+        $table->addColumn('email_id', 'integer', [
             'default' => null,
-            'limit' => 255,
+            'limit' => 11,
+            'null' => false,
+        ]);
+        $table->addColumn('email_sent', 'boolean', [
+            'default' => false,
             'null' => false,
         ]);
         $table->addColumn('created', 'datetime', [
@@ -30,10 +34,6 @@ class CreateEmailsList extends AbstractMigration
         $table->addColumn('modified', 'datetime', [
             'default' => null,
             'null' => false,
-        ]);
-        $table->addColumn('deleted_at', 'datetime', [
-            'default' => null,
-            'null' => true,
         ]);
         $table->create();
     }

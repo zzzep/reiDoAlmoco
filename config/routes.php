@@ -47,7 +47,18 @@ use Cake\Routing\Route\DashedRoute;
 Router::defaultRouteClass(DashedRoute::class);
 
 Router::scope('/api/', function (RouteBuilder $routes) {
-    $routes->get('/', ['controller' => 'Api', 'action' => 'display']);
+    $routes->get('/email-votes', ['controller' => 'Api', 'action' => 'votes']);
+    $routes->get('/email-list', ['controller' => 'Api', 'action' => 'list']);
+    $routes->get('/win-of-the-week', ['controller' => 'Api', 'action' => 'winOfTheWeek']);
+    $routes->get('/win-of-the-day', ['controller' => 'Api', 'action' => 'winOfTheDay']);
+    $routes->get('/valid-hour', ['controller' => 'Api', 'action' => 'validHour']);
+    $routes->get('/last-winner', ['controller' => 'Api', 'action' => 'validHour']);
+    
+    $routes->post('/vote', ['controller' => 'Api', 'action' => 'vote']);
+    $routes->post('/send-email', ['controller' => 'Api', 'action' => 'sendEmail']);
+    $routes->post('/create-email', ['controller' => 'Api', 'action' => 'createEmail']);
+    
+    
 });
 
 Router::scope('/', function (RouteBuilder $routes) {
@@ -57,13 +68,9 @@ Router::scope('/', function (RouteBuilder $routes) {
      * to use (in this case, src/Template/Pages/home.ctp)...
      */
     $routes->connect('/', ['controller' => 'Pages', 'action' => 'display', 'home']);
+    $routes->connect('/create-email', ['controller' => 'Pages', 'action' => 'display', 'createEmail']);
 
-    /**
-     * ...and connect the rest of 'Pages' controller's URLs.
-     */
-    $routes->connect('/pages/*', ['controller' => 'Pages', 'action' => 'display']);
-
-    /**
+   /**
      * Connect catchall routes for all controllers.
      *
      * Using the argument `DashedRoute`, the `fallbacks` method is a shortcut for
