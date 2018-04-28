@@ -39,6 +39,12 @@ class CreateEmailsList extends AbstractMigration
             'default' => null,
             'null' => true,
         ]);
+        $table->addIndex([
+            'email',
+        ], [
+            'name' => 'UNIQUE_EMAIL',
+            'unique' => true,
+        ]);
         $table->create();
     }
 }

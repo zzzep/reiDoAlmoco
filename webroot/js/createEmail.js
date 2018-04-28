@@ -1,14 +1,14 @@
-function vote(id) {
-    var body = {
-        "id": id
-    };
+function saveEmail() {
+    event.preventDefault();
     $("#loading-image").show();
+    var body = {};
     $.ajax({
         type: "POST",
-        url: "api/vote",
+        url: "create-email",
         data: body,
         success: function (data) {
             alert(data);
+            $('#email-creation')[0].reset();
         },
         error: function (XMLHttpRequest, textStatus, errorThrown) {
             alert("Erro inesperado!");

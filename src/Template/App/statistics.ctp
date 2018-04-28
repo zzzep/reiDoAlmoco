@@ -33,7 +33,7 @@ $votesToday = $allVotes = $votesThisWeek = [
 <h2 class="text-center give-me-space">Relações</h2>
 
 <h4 class="text-center">Votos Hoje</h4>
-<table class="table-responsive-lg table-bordered">
+<table class="table-responsive-lg table-bordered table-striped">
     <?php foreach ($votesToday as $competitor){ ?>
     <tr>
         <td width="130px"><?= $competitor["position"] ; ?></td>
@@ -44,7 +44,7 @@ $votesToday = $allVotes = $votesThisWeek = [
     <?php }?>
 </table>
 <h4 class="text-center">Votos Essa Semana</h4>
-<table class="table-responsive-lg table-bordered">
+<table class="table-responsive-lg table-bordered table-striped">
     <?php foreach ($votesToday as $competitor){ ?>
     <tr>
         <td width="130px"><?= $competitor["position"] ; ?></td>
@@ -55,7 +55,7 @@ $votesToday = $allVotes = $votesThisWeek = [
     <?php }?>
 </table>
 <h4 class="text-center">Votação Total</h4>
-<table class="table-responsive-lg table-bordered">
+<table class="table-responsive-lg table-bordered table-striped">
     <?php foreach ($votesToday as $competitor){ ?>
     <tr>
         <td width="130px"><?= $competitor["position"] ; ?></td>

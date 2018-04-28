@@ -1,4 +1,5 @@
 <?php
+
 return [
     /**
      * Debug Level:
@@ -10,7 +11,6 @@ return [
      * true: Errors and warnings shown.
      */
     'debug' => filter_var(env('DEBUG', true), FILTER_VALIDATE_BOOLEAN),
-
     /**
      * Configure basic information about the application.
      *
@@ -36,6 +36,7 @@ return [
      *   `plugins`, `templates`, `locales` subkeys, which allow the definition of
      *   paths for plugins, view templates and locale files respectively.
      */
+    "title" => env('TITLE', 'Rei do Almoço - by gfechio'),
     'App' => [
         'namespace' => 'App',
         'encoding' => env('APP_ENCODING', 'UTF-8'),
@@ -56,7 +57,6 @@ return [
             'locales' => [APP . 'Locale' . DS],
         ],
     ],
-
     /**
      * Security and encryption configuration
      *
@@ -67,7 +67,6 @@ return [
     'Security' => [
         'salt' => env('SECURITY_SALT', 'gfechio-rei-do-almoco'),
     ],
-
     /**
      * Apply timestamps with the last modified time to static assets (js, css, images).
      * Will append a querystring parameter containing the time the file was modified.
@@ -77,9 +76,8 @@ return [
      * enable timestamping regardless of debug value.
      */
     'Asset' => [
-        //'timestamp' => true,
+    //'timestamp' => true,
     ],
-
     /**
      * Configure the cache adapters.
      */
@@ -89,7 +87,6 @@ return [
             'path' => CACHE,
             'url' => env('CACHE_DEFAULT_URL', null),
         ],
-
         /**
          * Configure the cache used for general framework caching.
          * Translation cache files are stored with this configuration.
@@ -104,7 +101,6 @@ return [
             'duration' => '+1 years',
             'url' => env('CACHE_CAKECORE_URL', null),
         ],
-
         /**
          * Configure the cache for model and datasource caches. This cache
          * configuration is used to store schema descriptions, and table listings
@@ -119,7 +115,6 @@ return [
             'duration' => '+1 years',
             'url' => env('CACHE_CAKEMODEL_URL', null),
         ],
-
         /**
          * Configure the cache for routes. The cached routes collection is built the
          * first time the routes are processed via `config/routes.php`.
@@ -134,7 +129,6 @@ return [
             'url' => env('CACHE_CAKEROUTES_URL', null),
         ],
     ],
-
     /**
      * Configure the Error and Exception handlers used by your application.
      *
@@ -171,7 +165,6 @@ return [
         'log' => true,
         'trace' => true,
     ],
-
     /**
      * Email configuration.
      *
@@ -207,7 +200,6 @@ return [
             'url' => env('EMAIL_TRANSPORT_DEFAULT_URL', null),
         ],
     ],
-
     /**
      * Email delivery profiles
      *
@@ -221,11 +213,10 @@ return [
         'default' => [
             'transport' => 'default',
             'from' => 'gfechio-rei-do-almoco@hotmail.com',
-            //'charset' => 'utf-8',
-            //'headerCharset' => 'utf-8',
+        //'charset' => 'utf-8',
+        //'headerCharset' => 'utf-8',
         ],
     ],
-
     /**
      * Connection information used by the ORM to connect
      * to your application's datastores.
@@ -242,7 +233,7 @@ return [
     'Datasources' => [
         'default' => [
             'className' => 'Cake\Database\Connection',
-            'driver' =>'Cake\Database\Driver\Sqlite',
+            'driver' => 'Cake\Database\Driver\Sqlite',
             'datasource' => 'Database/Sqlite',
             'persistent' => false,
             'database' => 'rei_do_almoco',
@@ -278,7 +269,6 @@ return [
             'flags' => [],
             'cacheMetadata' => true,
             'log' => false,
-
             /**
              * Set identifier quoting to true if you are using reserved words or
              * special characters in your table or column names. Enabling this
@@ -288,7 +278,6 @@ return [
              * manipulated before being executed.
              */
             'quoteIdentifiers' => false,
-
             /**
              * During development, if using MySQL < 5.6, uncommenting the
              * following line could boost the speed at which schema metadata is
@@ -297,10 +286,8 @@ return [
              * which is the recommended value in production environments
              */
             //'init' => ['SET GLOBAL innodb_stats_on_metadata = 0'],
-
             'url' => env('DATABASE_URL', null),
         ],
-
         /**
          * The test connection is used during the test suite.
          */
@@ -322,7 +309,6 @@ return [
             'url' => env('DATABASE_TEST_URL', null),
         ],
     ],
-
     /**
      * Configures logging options
      */
@@ -352,7 +338,6 @@ return [
             'scopes' => ['queriesLog'],
         ],
     ],
-
     /**
      * Session configuration.
      *

@@ -54,7 +54,7 @@ $winnerOfTheDay = ["name" => "Demércio", "image" => "data"];
     <img src="<?= $winnerOfTheDay["image"] ; ?>" class="img-winner">
 </div>
 <h4 class="text-center">Competidores</h4>
-<table class="table-responsive-lg table-bordered">
+<table class="table-responsive-lg table-bordered table-striped">
     <?php foreach ($competitors as $competitor){ ?>
     <tr>
         <td width="130px"><img src="<?= $competitor["image"] ; ?>" class="img-competitor max-100"></td>
@@ -67,7 +67,7 @@ $winnerOfTheDay = ["name" => "Demércio", "image" => "data"];
 </table>
 
 <h4 class="text-center">Últimos Reis</h4>
-<table class="table-responsive-lg table-bordered">
+<table class="table-responsive-lg table-bordered table-striped">
     <?php foreach ($lastWinners as $winner){ ?>
     <tr>
         <td><?= $winner["week"] ?>º Semana</td>
@@ -78,7 +78,7 @@ $winnerOfTheDay = ["name" => "Demércio", "image" => "data"];
 </table>
 
 <h4 class="text-center">Reis Menos Amados</h4>
-<table class="table-responsive-lg table-bordered">
+<table class="table-responsive-lg table-bordered table-striped">
     <?php foreach ($worstKings as $king){ ?>
     <tr>
         <td class="text-center" width="130px;"><?= $king["position"] ?></td>

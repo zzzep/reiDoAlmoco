@@ -441,6 +441,21 @@ input[type="button"] {
     margin: 10px;
 }
 
+.create-email {
+    max-width:500px;
+    left: calc(50% - 250px);
+    position: absolute;
+}
+.create-email tr td:first-child{
+    width:70px;
+}
+#loading-image{
+    position:absolute;
+    top:calc(50% - 25px);
+    left:calc(50% - 25px);
+    width:50px;
+}
+
 /**
  * Foundation for Sites by ZURB
  * Version 5

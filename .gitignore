@@ -38,3 +38,7 @@ nbproject/*
 .vscode
 # Sass preprocessor
 .sass-cache/
+
+# Specific file from this app
+rei_do_almoco
+test_rei_do_almoco
