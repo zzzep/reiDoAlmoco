@@ -46,6 +46,10 @@ use Cake\Routing\Route\DashedRoute;
  */
 Router::defaultRouteClass(DashedRoute::class);
 
+Router::scope('/api/', function (RouteBuilder $routes) {
+    $routes->get('/', ['controller' => 'Api', 'action' => 'display']);
+});
+
 Router::scope('/', function (RouteBuilder $routes) {
     /**
      * Here, we are connecting '/' (base path) to a controller called 'Pages',
