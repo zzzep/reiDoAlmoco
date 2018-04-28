@@ -2,10 +2,11 @@
     "name": "zzzep/reiDoAlmoco",
     "description": "Rei do Almoço - Giusepppe Dezute Fechio",
     "homepage": "https://cakephp.org",
-    "type": "project",
+    "type": "cakephp-plugin",
     "license": "MIT",
     "require": {
         "php": ">=5.6",
+        "cakedc/migrations": "^2.5",
         "cakephp/cakephp": "3.6.*",
         "cakephp/migrations": "^1.8",
         "cakephp/plugin-installer": "^1.0",
@@ -26,7 +27,8 @@
     },
     "autoload": {
         "psr-4": {
-            "App\\": "src/"
+            "App\\": "src/",
+            "Migrations\\": "./vendor/cakephp/migrations/src"
         }
     },
     "autoload-dev": {

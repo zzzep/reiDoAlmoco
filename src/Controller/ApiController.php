@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CakePHP(tm) : Rapid Development Framework (https://cakephp.org)
  * Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
@@ -12,10 +13,12 @@
  * @since     0.2.9
  * @license   https://opensource.org/licenses/mit-license.php MIT License
  */
+
 namespace App\Controller;
 
 use Cake\Controller\Controller;
 use Cake\Event\Event;
+use Cake\Http\Response;
 
 /**
  * Application Controller
@@ -25,8 +28,7 @@ use Cake\Event\Event;
  *
  * @link https://book.cakephp.org/3.0/en/controllers.html#the-app-controller
  */
-class ApiController extends Controller
-{
+class ApiController extends Controller {
 
     /**
      * Initialization hook method.
@@ -37,8 +39,7 @@ class ApiController extends Controller
      *
      * @return void
      */
-    public function initialize()
-    {
+    public function initialize() {
         parent::initialize();
 
         $this->loadComponent('RequestHandler');
@@ -51,8 +52,34 @@ class ApiController extends Controller
         //$this->loadComponent('Security');
         //$this->loadComponent('Csrf');
     }
-    
-    public function display(){
+
+    public function index() {
+        $response = json_encode([
+            "error" => false,
+            "code" => 200,
+            "message" => [
+                "validsUrls" => [
+                    "GET" => [
+                        '/api/email-votes',
+                        '/api/email-list',
+                        '/api/win-of-the-week',
+                        '/api/win-of-the-day',
+                        '/api/valid-hour',
+                        '/api/last-winner'
+                    ],
+                    "POST" => [
+                        '/api/vote',
+                        '/api/send-email',
+                        '/api/create-email'
+                    ]
+                ]
+            ]
+        ]);
+        $this->set("json",$response);
+    }
+
+    public function display() {
         $this->render('HomeApi');
     }
+
 }

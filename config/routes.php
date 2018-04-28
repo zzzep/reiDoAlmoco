@@ -47,6 +47,9 @@ use Cake\Routing\Route\DashedRoute;
 Router::defaultRouteClass(DashedRoute::class);
 
 Router::scope('/api/', function (RouteBuilder $routes) {
+        
+    $routes->get('/', ['controller' => 'Api', 'action' => 'index']);
+    
     $routes->get('/email-votes', ['controller' => 'Api', 'action' => 'votes']);
     $routes->get('/email-list', ['controller' => 'Api', 'action' => 'list']);
     $routes->get('/win-of-the-week', ['controller' => 'Api', 'action' => 'winOfTheWeek']);

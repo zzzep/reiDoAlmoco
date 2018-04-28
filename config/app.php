@@ -242,7 +242,7 @@ return [
     'Datasources' => [
         'default' => [
             'className' => 'Cake\Database\Connection',
-            'driver' =>'sqlite',
+            'driver' =>'Cake\Database\Driver\Sqlite',
             'datasource' => 'Database/Sqlite',
             'persistent' => false,
             'database' => 'rei_do_almoco',
