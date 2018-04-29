@@ -48,7 +48,7 @@ Router::defaultRouteClass(DashedRoute::class);
 
 Router::scope('/api/', function (RouteBuilder $routes) {
         
-    $routes->get('/', ['controller' => 'Api', 'action' => 'index']);
+    /*OK*/$routes->get('/', ['controller' => 'Api', 'action' => 'index']);
     
     $routes->get('/email-votes', ['controller' => 'Api', 'action' => 'votes']);
     $routes->get('/email-list', ['controller' => 'Api', 'action' => 'list']);
@@ -59,9 +59,9 @@ Router::scope('/api/', function (RouteBuilder $routes) {
     $routes->get('/valid-hour', ['controller' => 'Api', 'action' => 'validHour']);
     $routes->get('/last-winner', ['controller' => 'Api', 'action' => 'validHour']);
     
-    $routes->post('/vote', ['controller' => 'Api', 'action' => 'vote']);
+    /*OK*/$routes->post('/vote', ['controller' => 'Api', 'action' => 'vote']);
     $routes->post('/send-email', ['controller' => 'Api', 'action' => 'sendEmail']);
-    $routes->post('/create-email', ['controller' => 'Api', 'action' => 'createEmail']);
+    /*OK*/$routes->post('/create-email', ['controller' => 'Api', 'action' => 'createEmail']);
     
     
 });

@@ -17,10 +17,12 @@
 namespace App\Controller;
 
 use Cake\Controller\Controller;
-use App\Helper\FieldsValidator;
+use App\Helper\CreateEmailValidator;
 use App\Model\Entity\Json;
 use App\Model\Table\EmailsList;
+use App\Model\Table\Votes;
 use Cake\Core\Configure;
+use Cake\Mailer\Email;
 
 /**
  * Application Controller
@@ -90,7 +92,7 @@ class ApiController extends Controller {
 
     public function createEmail() {
         try {
-            $form = new FieldsValidator();
+            $form = new CreateEmailValidator();
             $jsonData = (Array) $this->request->input('json_decode');
             $isValid = $form->validate($jsonData);
             if (!$isValid) {
@@ -99,6 +101,31 @@ class ApiController extends Controller {
             $model = new EmailsList();
             $model->saveEmail($jsonData);
             $this->set("data", $this->setJsonResponse("Email Cadastrado"));
+        } catch (\Exception $e) {
+            $this->set("data", $this->setJsonResponse($e->getMessage(), 500, true));
+        }
+    }
+
+    public function sendEmail() {
+        $model = new Votes();
+        $king = $model->getTodayKing();
+                
+        $emailSender = new Email('default');
+        $emailSender->from(['rei@almoco.com' => 'Rei do Almoco'])
+                ->to($king->email)
+                ->subject('Você foi o Rei de Hoje')
+                ->send('Parabens!!!! <br> Você foi o rei de Hoje');
+    }
+
+    public function vote() {
+        try {
+            $jsonData = $this->request->input('json_decode');
+            if (!isset($jsonData->id)) {
+                throw new \Exception("Id não informado");
+            }
+            $model = new Votes();
+            $model->saveVote($jsonData->id, $this->request->clientIp());
+            $this->set("data", $this->setJsonResponse("Voto Confirmado"));
         } catch (\Exception $e) {
             $this->set("data", $this->setJsonResponse($e->getMessage(), 500, true));
         }

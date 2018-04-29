@@ -6,9 +6,10 @@ function vote(id) {
     $.ajax({
         type: "POST",
         url: "api/vote",
-        data: body,
+        data: JSON.stringify(body),
         success: function (data) {
-            alert(data);
+            var response = JSON.parse(data);
+            alert(response.message);
         },
         error: function (XMLHttpRequest, textStatus, errorThrown) {
             alert("Erro inesperado!");

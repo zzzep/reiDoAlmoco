@@ -18,7 +18,7 @@ use Cake\Form\Form;
 use Cake\Form\Schema;
 use Cake\Validation\Validator;
 
-class FieldsValidator extends Form {
+class CreateEmailValidator extends Form {
 
     protected function _buildSchema(Schema $schema) {
         return $schema->addField('name', 'string')

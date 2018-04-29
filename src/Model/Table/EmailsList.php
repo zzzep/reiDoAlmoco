@@ -16,10 +16,10 @@ use Cake\Core\Configure;
 
 class EmailsList extends Table {
     
-    public function __construct() {
+    /*public function __construct() {
         $config = Configure::read("datasources");
         parent::__construct($config);
-    }
+    }*/
 
     public function saveEmail($params) {
         $articlesTable = TableRegistry::get('emails_list');
@@ -29,6 +29,7 @@ class EmailsList extends Table {
         $entity->email = $params["email"];
         $entity->name = $params["name"];
         $entity->image = $params["imageText"];
+        $entity->created = date("y-m-d");
 
         if ($articlesTable->save($entity)) {
             return $entity->id;

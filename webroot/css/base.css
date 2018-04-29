@@ -451,9 +451,9 @@ input[type="button"] {
 }
 #loading-image{
     position:absolute;
-    top:calc(50% - 25px);
-    left:calc(50% - 25px);
-    width:30%;
+    top:50px;
+    left:50px;
+    width:150px;
 }
 
 input.invalid{
