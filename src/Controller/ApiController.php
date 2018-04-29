@@ -19,6 +19,8 @@ namespace App\Controller;
 use Cake\Controller\Controller;
 use App\Helper\FieldsValidator;
 use App\Model\Entity\Json;
+use App\Model\Table\EmailsList;
+use Cake\Core\Configure;
 
 /**
  * Application Controller
@@ -94,7 +96,8 @@ class ApiController extends Controller {
             if (!$isValid) {
                 $this->treatErrors($form->errors());
             }
-
+            $model = new EmailsList();
+            $model->saveEmail($jsonData);
             $this->set("data", $this->setJsonResponse("Email Cadastrado"));
         } catch (\Exception $e) {
             $this->set("data", $this->setJsonResponse($e->getMessage(), 500, true));
