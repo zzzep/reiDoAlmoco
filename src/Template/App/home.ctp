@@ -22,7 +22,6 @@ use Cake\Network\Exception\NotFoundException;
 
 $this->layout = "default";
 
-$winnerOfTheDay = ["name" => "Demércio", "image" => "data"];
 ?>
 
 <?= $this->Html->css('home.css') ?>
@@ -65,7 +64,7 @@ $winnerOfTheDay = ["name" => "Demércio", "image" => "data"];
     <tr>
         <td class="text-center" width="130px;"><?= $king["position"] ?></td>
         <td><?= $king["name"]; ?><br><?= $king["email"] ?></td>
-        <td width="130px"><img src="<?= $winner["image"] ; ?>" class="img-competitor max-100"></td>
+        <td width="130px"><img src="<?= $king["image"] ; ?>" class="img-competitor max-100"></td>
         <td class="text-center" width="130px;"><?= $king["votes"] ?></td>
     </tr>
     <?php }?>

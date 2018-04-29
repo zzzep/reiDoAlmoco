@@ -28,27 +28,33 @@ class EmailsWinners extends Table {
         return false;
     }
 
+    public function lastWinner() {
+        $winner = TableRegistry::get('email_winners')->find()->order("win_date desc")->toArray();
+        $email = (new EmailsList)->getEmailById($winner[0]->email_id)[0];
+        return ["name" => $email->name, "image" => $email->image];
+    }
+
     public function getWeekWinners() {
         $winners = TableRegistry::get('email_winners')->find()->toArray();
         foreach ($winners as $winner) {
             $date = new \DateTime($winner->win_date);
             $week = $date->format("W");
-            if (!isset($weekWinners[$week])){
+            if (!isset($weekWinners[$week])) {
                 $weekWinners[$week] = [];
             }
-            if (!isset($weekWinners[$week][$winner->email_id])){
+            if (!isset($weekWinners[$week][$winner->email_id])) {
                 $weekWinners[$week][$winner->email_id] = 0;
             }
-            $weekWinners[$week][$winner->email_id]++;
-            $weekWinnerId[$week] = array_keys($weekWinners[$week],max($weekWinners[$week]))[0];
+            $weekWinners[$week][$winner->email_id] ++;
+            $weekWinnerId[$week] = array_keys($weekWinners[$week], max($weekWinners[$week]))[0];
         }
-        
+
         $result = [];
-        foreach ($weekWinnerId as $week => $winner){
+        foreach ($weekWinnerId as $week => $winner) {
             $email = (new EmailsList)->getEmailById($winner)[0];
             $result[] = ["id" => 1, "week" => $week, "name" => $email->name, "email" => $email->email, "image" => $email->image];
         }
-         usort($result, function ($b, $a){
+        usort($result, function ($b, $a) {
             return strcmp($a["week"], $b["week"]);
         });
 

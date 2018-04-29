@@ -56,6 +56,7 @@ class AppController extends Controller
     }
     
     public function home() {
+        
         $emailsModel = new EmailsList();
         $emails = $emailsModel->getEmails();
         $this->set("competitors", $emails);
@@ -64,6 +65,9 @@ class AppController extends Controller
         $weekWinners = $winnersModel->getWeekWinners();
         $this->set("lastWinners", $weekWinners);
         
+        $lastWinner = $winnersModel->lastWinner();
+        $this->set("winnerOfTheDay", $lastWinner);
+                
         $votesModel = new Votes();
         $worstKings = $votesModel->worstKings();
         $this->set("worstKings",$worstKings);

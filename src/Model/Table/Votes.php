@@ -35,11 +35,10 @@ class Votes extends Table {
             $emails[$key]["votes"] = $votes;
         }
         
-        $array = (array)$emails;
-        $result = usort($array, function ($a, $b){
+        $result = usort($emails, function ($a, $b){
             return strcmp($a["votes"], $b["votes"]);
         });
-        return $array;
+        return $emails;
     }
 
     public function saveVote($id, $ip) {
