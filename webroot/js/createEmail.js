@@ -17,11 +17,12 @@ function saveEmail() {
 
     $.ajax({
         type: "POST",
-        url: "create-email",
+        url: "api/create-email",
         data: JSON.stringify(body),
         success: function (data) {
-            alert(data);
-            if (data.code == 200) {
+            var response = JSON.parse(data);
+            alert(response.message);
+            if (response.code == 200) {
                 $('#email-creation')[0].reset();
             }
         },

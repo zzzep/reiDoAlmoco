@@ -9,4 +9,4 @@ use Cake\Network\Exception\NotFoundException;
 
 $this->layout = false;
 
-echo $json;
+echo json_encode($data);
