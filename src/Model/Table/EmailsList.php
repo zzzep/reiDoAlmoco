@@ -22,20 +22,38 @@ class EmailsList extends Table {
     }*/
 
     public function saveEmail($params) {
-        $articlesTable = TableRegistry::get('emails_list');
+        $emailsTablele = TableRegistry::get('emails_list');
         
-        $entity = $articlesTable->newEntity();
+        $entity = $emailsTablele->newEntity();
         
         $entity->email = $params["email"];
         $entity->name = $params["name"];
         $entity->image = $params["imageText"];
         $entity->created = date("y-m-d");
 
-        if ($articlesTable->save($entity)) {
+        if ($emailsTablele->save($entity)) {
             return $entity->id;
         }
 
         return false;
     }
-
+    
+    public function getEmailById($id){
+        $emails = TableRegistry::get('emails_list');
+        $query = $emails->find()->where("id = $id")->toList();
+        
+        return $query;
+        
+    }
+    
+    public function getEmails(){
+        $emails = TableRegistry::get('emails_list');
+        
+        $query = $emails
+                ->find()
+                ->toArray();
+        
+        return (array) $query;
+    }
+    
 }

@@ -49,16 +49,7 @@ Router::defaultRouteClass(DashedRoute::class);
 Router::scope('/api/', function (RouteBuilder $routes) {
         
     /*OK*/$routes->get('/', ['controller' => 'Api', 'action' => 'index']);
-    
-    $routes->get('/email-votes', ['controller' => 'Api', 'action' => 'votes']);
-    $routes->get('/email-list', ['controller' => 'Api', 'action' => 'list']);
-    $routes->get('/win-of-the-week', ['controller' => 'Api', 'action' => 'winOfTheWeek']);
-    $routes->get('/lasts-winners-of-the-week', ['controller' => 'Api', 'action' => 'lastsWinners']);
-    $routes->get('/worst-kings', ['controller' => 'Api', 'action' => 'worstKings']);
-    $routes->get('/win-of-the-day', ['controller' => 'Api', 'action' => 'winOfTheDay']);
-    $routes->get('/valid-hour', ['controller' => 'Api', 'action' => 'validHour']);
-    $routes->get('/last-winner', ['controller' => 'Api', 'action' => 'validHour']);
-    
+       
     /*OK*/$routes->post('/vote', ['controller' => 'Api', 'action' => 'vote']);
     $routes->post('/send-email', ['controller' => 'Api', 'action' => 'sendEmail']);
     /*OK*/$routes->post('/create-email', ['controller' => 'Api', 'action' => 'createEmail']);

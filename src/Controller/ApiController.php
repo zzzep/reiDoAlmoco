@@ -65,16 +65,7 @@ class ApiController extends Controller {
             "code" => 200,
             "message" => [
                 "validsUrls" => [
-                    "GET" => [
-                        '/api/email-votes',
-                        '/api/email-list',
-                        '/api/win-of-the-week',
-                        '/api/lasts-winners-of-the-week',
-                        '/api/worst-kings',
-                        '/api/win-of-the-day',
-                        '/api/valid-hour',
-                        '/api/last-winner'
-                    ],
+                    "GET" => [],
                     "POST" => [
                         '/api/vote',
                         '/api/send-email',

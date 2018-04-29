@@ -16,6 +16,9 @@ namespace App\Controller;
 
 use Cake\Controller\Controller;
 use Cake\Event\Event;
+use App\Model\Table\EmailsList;
+use App\Model\Table\Votes;
+use App\Model\Table\EmailsWinners;
 
 /**
  * Application Controller
@@ -53,6 +56,17 @@ class AppController extends Controller
     }
     
     public function home() {
+        $emailsModel = new EmailsList();
+        $emails = $emailsModel->getEmails();
+        $this->set("competitors", $emails);
+        
+        $winnersModel = new EmailsWinners();
+        $weekWinners = $winnersModel->getWeekWinners();
+        $this->set("lastWinners", $weekWinners);
+        
+        $votesModel = new Votes();
+        $worstKings = $votesModel->worstKings();
+        $this->set("worstKings",$worstKings);
         
     }
     

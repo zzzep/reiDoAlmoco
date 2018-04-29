@@ -21,24 +21,6 @@ use Cake\Error\Debugger;
 use Cake\Network\Exception\NotFoundException;
 
 $this->layout = "default";
-$competitors = [
-    ["id" => 1, "name" => "Mandy", "email" => "123@email.com", "image" => "data"],
-    ["id" => 2, "name" => "Zepp", "email" => "456@email.com", "image" => "data"],
-    ["id" => 3, "name" => "Rooney", "email" => "789@email.com", "image" => "data"],
-    ["id" => 4, "name" => "Carol", "email" => "0AB@email.com", "image" => "data"]
-];
-
-$lastWinners = [
-    ["id" => 1, "week" => "3", "name" => "Mandy", "email" => "123@email.com", "image" => "data"],
-    ["id" => 2, "week" => "2", "name" => "Zepp", "email" => "456@email.com", "image" => "data"],
-    ["id" => 3, "week" => "1", "name" => "Rooney", "email" => "789@email.com", "image" => "data"]
-];
-
-$worstKings = [
-    ["id" => 1, "position" => 1, "votes" => "7", "name" => "Carol", "email" => "123@email.com", "image" => "data"],
-    ["id" => 2, "position" => 2, "votes" => "35", "name" => "Rooney", "email" => "456@email.com", "image" => "data"],
-    ["id" => 3, "position" => 3, "votes" => "189", "name" => "Zepp", "email" => "789@email.com", "image" => "data"]    
-];
 
 $winnerOfTheDay = ["name" => "Demércio", "image" => "data"];
 ?>
