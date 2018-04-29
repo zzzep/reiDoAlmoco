@@ -456,6 +456,13 @@ input[type="button"] {
     width:30%;
 }
 
+input.invalid{
+    border:1px solid red !important;
+}
+input.valid{
+    border:1px solid blue !important;
+}
+
 /**
  * Foundation for Sites by ZURB
  * Version 5

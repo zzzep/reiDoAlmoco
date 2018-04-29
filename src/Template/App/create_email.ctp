@@ -33,19 +33,20 @@ $this->layout = "default";
         <tr>
             <td>Nome:</td>
             <td>
-                <input type="text" name="name" value="" size="60" />
+                <input type="text" name="name" value="" size="60" required="true" class="invalid"/>
             </td>
         </tr>
         <tr>
             <td>Email:</td>
             <td>
-                <input type="text" name="email" value="" size="60" />
+                <input type="text" name="email" value="" size="60" required="true" class="invalid"/>
             </td>
         </tr>
         <tr>
             <td>Foto:</td>
             <td>
-                <input type="file" name="image" value="" width="60" />
+                <input type="file" name="image" value="" width="60" onchange="encodeImagetoBase64(this)" required="true"/>
+                <input type="hidden" id="imageText" name="imageText" value="" readonly="readonly" />
             </td>
         </tr>
         <tfoot>
