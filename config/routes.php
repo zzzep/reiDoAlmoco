@@ -65,7 +65,6 @@ Router::scope('/', function (RouteBuilder $routes) {
      */
     $routes->connect('/', ['controller' => 'App', 'action' => 'home']);
     $routes->connect('/create-email', ['controller' => 'App', 'action' => 'createEmail']);
-    $routes->connect('/statistics', ['controller' => 'App', 'action' => 'statistics']);
 
    /**
      * Connect catchall routes for all controllers.

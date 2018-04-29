@@ -21,8 +21,8 @@ use App\Helper\CreateEmailValidator;
 use App\Model\Entity\Json;
 use App\Model\Table\EmailsList;
 use App\Model\Table\Votes;
-use Cake\Core\Configure;
-use Cake\Mailer\Email;
+use App\Model\Table\EmailsWinners;
+use App\Helper\Email;
 
 /**
  * Application Controller
@@ -100,12 +100,11 @@ class ApiController extends Controller {
     public function sendEmail() {
         $model = new Votes();
         $king = $model->getTodayKing();
-                
-        $emailSender = new Email('default');
-        $emailSender->from(['rei@almoco.com' => 'Rei do Almoco'])
-                ->to($king->email)
-                ->subject('Você foi o Rei de Hoje')
-                ->send('Parabens!!!! <br> Você foi o rei de Hoje');
+
+        (new Email())->send("default", "naoresponda@reidoalmoco.com", $king->email);
+
+        $winnerModel = new EmailsWinners();
+        $winnerModel->saveWinner($king->id);
     }
 
     public function vote() {

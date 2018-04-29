@@ -33,6 +33,8 @@ $this->layout = "default";
     <?= $winnerOfTheDay["name"] ; ?>
     &nbsp;&nbsp;&nbsp;
     <img src="<?= $winnerOfTheDay["image"] ; ?>" class="img-winner">
+    <br><br>
+    <input type="submit" value="Enviar Email pro Vencedor" name="send_email" class="btn btn-success" onclick="sendEmailToWinner(<?= $winnerOfTheDay["id"] ?>);"/>
 </div>
 <h4 class="text-center">Competidores</h4>
 <table class="table-responsive-lg table-bordered table-striped">

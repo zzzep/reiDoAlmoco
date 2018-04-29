@@ -10,20 +10,36 @@ namespace App\Model\Table;
 
 use Cake\ORM\Table;
 use Cake\ORM\TableRegistry;
-use Cake\Database\Schema\SqliteSchema;
-use Cake\Database\Driver\Sqlite;
-use Cake\Core\Configure;
+use App\Model\Table\EmailsList;
 
 class Votes extends Table {
 
     public function getTodayKing() {
+        
         $votesTables = TableRegistry::get('votes');
-
-        $query = $votesTables
-                ->find()
-                ->select(['email', 'name'])
-                ->where(['created =' => date("y-m-d")])
-                ->order(['created' => 'DESC']);
+        $date = '"%' . date("y-m-d") . '%"';
+        $list = (new EmailsList())->getEmails();
+        
+        $competitors = [];
+        foreach ($list as $email){
+            $votes = $votesTables->find()->where("email_id = $email->id and created like $date")->count();   
+            $competitors[$email->id] = [
+                "email" => $email,
+                "votes" => $votes
+            ];
+        }
+        
+        foreach ($competitors as $key => $value){
+            if (!isset($winner)){
+                $winner = $value;
+            }
+            if ($value["votes"] > $winner ["votes"]){
+                $winner = $value;
+            }
+        }
+        
+        return $winner["email"];
+        
     }
 
     public function worstKings() {

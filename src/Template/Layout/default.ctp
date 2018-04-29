@@ -51,7 +51,6 @@ use Cake\Core\Configure;
             <div class="top-bar-section">
                 <ul class="right">
                     <li><a target="_self" href="<?php echo Router::url('/', true); ?>">Home</a></li>
-                    <li><a target="_self" href="<?php echo Router::url('/statistics', true); ?>">Relatórios</a></li>
                     <li><a target="_self" href="<?php echo Router::url('/create-email', true); ?>">Cadastro de Email</a></li>
                 </ul>
             </div>

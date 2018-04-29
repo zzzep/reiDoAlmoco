@@ -31,7 +31,7 @@ class EmailsWinners extends Table {
     public function lastWinner() {
         $winner = TableRegistry::get('email_winners')->find()->order("win_date desc")->toArray();
         $email = (new EmailsList)->getEmailById($winner[0]->email_id)[0];
-        return ["name" => $email->name, "image" => $email->image];
+        return ["id" => $email->id, "name" => $email->name, "image" => $email->image];
     }
 
     public function getWeekWinners() {
