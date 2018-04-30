@@ -48,11 +48,11 @@ Router::defaultRouteClass(DashedRoute::class);
 
 Router::scope('/api/', function (RouteBuilder $routes) {
         
-    /*OK*/$routes->get('/', ['controller' => 'Api', 'action' => 'index']);
+    $routes->get('/', ['controller' => 'Api', 'action' => 'index']);
        
-    /*OK*/$routes->post('/vote', ['controller' => 'Api', 'action' => 'vote']);
+    $routes->post('/vote', ['controller' => 'Api', 'action' => 'vote']);
     $routes->post('/send-email', ['controller' => 'Api', 'action' => 'sendEmail']);
-    /*OK*/$routes->post('/create-email', ['controller' => 'Api', 'action' => 'createEmail']);
+    $routes->post('/create-email', ['controller' => 'Api', 'action' => 'createEmail']);
     
     
 });

@@ -1,5 +1,6 @@
 <?php
 use Migrations\AbstractMigration;
+use Phinx\Db\Adapter\MysqlAdapter;
 
 class CreateEmailsList extends AbstractMigration
 {
@@ -25,6 +26,7 @@ class CreateEmailsList extends AbstractMigration
         ]);
         $table->addColumn('image', 'text', [
             'default' => null,
+            'limit' => MysqlAdapter::TEXT_LONG,
             'null' => true,
         ]);
         $table->addColumn('created', 'datetime', [

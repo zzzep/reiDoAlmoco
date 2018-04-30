@@ -74,10 +74,6 @@ class AppController extends Controller
         
     }
     
-    public function statistics() {
-        
-    }
-    
     public function createEmail() {
         
     }

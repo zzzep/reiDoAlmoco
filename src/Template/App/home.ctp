@@ -62,12 +62,15 @@ $this->layout = "default";
 
 <h4 class="text-center">Reis Menos Amados</h4>
 <table class="table-responsive-lg table-bordered table-striped">
-    <?php foreach ($worstKings as $king){ ?>
+    <?php 
+        for ($key=0 ; $key <=4 ; $key++){
+            if (!isset($worstKings[$key])) continue;
+    ?>
     <tr>
-        <td class="text-center" width="130px;"><?= $king["position"] ?></td>
-        <td><?= $king["name"]; ?><br><?= $king["email"] ?></td>
-        <td ><img src="<?= $king["image"] ; ?>" class="img-competitor max-100"></td>
-        <td class="text-center" width="130px;"><?= $king["votes"] ?></td>
+        <td class="text-center" width="130px;"><?= $worstKings[$key]["position"] ?></td>
+        <td><?= $worstKings[$key]["name"]; ?><br><?= $worstKings[$key]["email"] ?></td>
+        <td ><img src="<?= $worstKings[$key]["image"] ; ?>" class="img-competitor max-100"></td>
+        <td class="text-center" width="130px;"><?= $worstKings[$key]["votes"] ?></td>
     </tr>
     <?php }?>
 </table>

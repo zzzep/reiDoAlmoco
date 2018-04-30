@@ -14,8 +14,8 @@ $database = [
         'cacheMetadata' => true,
     ]
 ];
-$database["teste"] = $database["default"];
-$database["teste"]["database"] = "test_rei_do_almoco";
+$database["test"] = $database["default"];
+$database["test"]["database"] = "test_rei_do_almoco";
 
 return [
     /**

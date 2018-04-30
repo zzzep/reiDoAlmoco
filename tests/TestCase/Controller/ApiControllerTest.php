@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CakePHP(tm) : Rapid Development Framework (https://cakephp.org)
  * Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
@@ -12,6 +13,7 @@
  * @since         1.2.0
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
+
 namespace App\Test\TestCase\Controller;
 
 use App\Controller\ApiController;
@@ -25,30 +27,16 @@ use Cake\View\Exception\MissingTemplateException;
 /**
  * PagesControllerTest class
  */
-class PagesControllerTest extends IntegrationTestCase
-{
+class ApiControllerTest extends IntegrationTestCase {
+
     /**
      * testGet method
      *
      * @return void
      */
-    public function testGet()
-    {
-        $this->get('/');
+    public function testGet() {
+        $this->get('/api/');
         $this->assertResponseOk();
-    }
-
-    /**
-     * testDisplay method
-     *
-     * @return void
-     */
-    public function testDisplay()
-    {
-        $this->get('/create-email');
-        $this->assertResponseOk();
-        $this->assertResponseContains('<html>');
-        $this->assertResponseContains('Rei do Almoço');
     }
 
     /**
@@ -56,8 +44,7 @@ class PagesControllerTest extends IntegrationTestCase
      *
      * @return void
      */
-    public function testMissingTemplate()
-    {
+    public function testMissingTemplate() {
         Configure::write('debug', false);
         $this->get('/pages/not_existing');
 
@@ -65,31 +52,40 @@ class PagesControllerTest extends IntegrationTestCase
         $this->assertResponseContains('Error');
     }
 
-    /**
-     * Test that missing template in debug mode renders missing_template error page
-     *
-     * @return void
-     */
-    public function testMissingTemplateInDebug()
-    {
-        Configure::write('debug', true);
-        $this->get('/pages/not_existing');
+    public function testValidsUrls() {
+        $this->get("/api");
+        $this->assertResponseOk();
+        $this->assertJson("{}");
 
-        $this->assertResponseFailure();
-        $this->assertResponseContains('Missing Template');
-        $this->assertResponseContains('Stacktrace');
-        $this->assertResponseContains('not_existing.ctp');
+        $this->get("/api/create-email");
+        $this->assertResponseOk();
+        $this->assertJson("{}");
+
+        $this->get("/api/send-email");
+        $this->assertResponseOk();
+        $this->assertJson("{}");
+
+        $this->get("/api/vote");
+        $this->assertResponseOk();
+        $this->assertJson("{}");
     }
 
-    /**
-     * Test directory traversal protection
-     *
-     * @return void
-     */
-    public function testDirectoryTraversalProtection()
-    {
-        $this->get('/pages/../Layout/ajax');
-        $this->assertResponseCode(403);
-        $this->assertResponseContains('Forbidden');
+    public function testEmailCreation(){
+        $this->post("/api/create-email", '{"email":"teste@teste.com","name":"teste","image":"none"}');
+        $this->assertResponseOk();
+        $this->assertJson("{}");
     }
+    
+    public function testValidVotationResponse(){
+        $this->post("/api/vote", '{"id":"1"}');
+        $this->assertResponseOk();
+        $this->assertJson("{}");
+    }
+    
+    public function testSendEmailResponse(){
+        $this->post("/api/send-email");
+        $this->assertResponseOk();
+        $this->assertJson("{}");
+    }
+
 }

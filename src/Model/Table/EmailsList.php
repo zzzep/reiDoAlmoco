@@ -22,6 +22,10 @@ class EmailsList extends Table {
 
     public function saveEmail($params) {
         $listModel = TableRegistry::get('emails_list');
+        
+        if (!isset($params["email"])){
+            throw new \Exception("Parametros inválidos");
+        }
 
         $emailExist = $listModel->find()->where('email = "' . $params["email"] . '"')->count();
 
