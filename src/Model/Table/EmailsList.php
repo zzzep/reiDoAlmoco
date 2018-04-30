@@ -15,45 +15,49 @@ use Cake\Database\Driver\Sqlite;
 use Cake\Core\Configure;
 
 class EmailsList extends Table {
-    
-    /*public function __construct() {
-        $config = Configure::read("datasources");
-        parent::__construct($config);
-    }*/
+    /* public function __construct() {
+      $config = Configure::read("datasources");
+      parent::__construct($config);
+      } */
 
     public function saveEmail($params) {
-        $emailsTablele = TableRegistry::get('emails_list');
-        
-        $entity = $emailsTablele->newEntity();
-        
+        $listModel = TableRegistry::get('emails_list');
+
+        $emailExist = $listModel->find()->where('email = "' . $params["email"] . '"')->count();
+
+        if ($emailExist > 0) {
+            throw new \Exception("Email já cadastrado");
+        }
+
+        $entity = $listModel->newEntity();
+
         $entity->email = $params["email"];
         $entity->name = $params["name"];
         $entity->image = $params["imageText"];
         $entity->created = date("y-m-d");
 
-        if ($emailsTablele->save($entity)) {
+        if ($listModel->save($entity)) {
             return $entity->id;
         }
 
         return false;
     }
-    
-    public function getEmailById($id){
+
+    public function getEmailById($id) {
         $emails = TableRegistry::get('emails_list');
         $query = $emails->find()->where("id = $id")->toList();
-        
+
         return $query;
-        
     }
-    
-    public function getEmails(){
+
+    public function getEmails() {
         $emails = TableRegistry::get('emails_list');
-        
+
         $query = $emails
                 ->find()
                 ->toArray();
-        
+
         return (array) $query;
     }
-    
+
 }

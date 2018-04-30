@@ -40,9 +40,9 @@ $this->layout = "default";
 <table class="table-responsive-lg table-bordered table-striped">
     <?php foreach ($competitors as $competitor){ ?>
     <tr>
-        <td width="130px"><img src="<?= $competitor["image"] ; ?>" class="img-competitor max-100"></td>
+        <td ><img src="<?= $competitor["image"] ; ?>" class="img-competitor max-100"></td>
         <td><?= $competitor["name"]; ?><br><?= $competitor["email"] ?></td>
-        <td class="text-center middle max-100" width="130px">
+        <td class="text-center middle max-100" >
             <input type="button" value="Votar" name="vote" class="button btn-info" onclick="vote(<?= $competitor["id"] ?>)"/>
         </td>
     </tr>
@@ -54,7 +54,7 @@ $this->layout = "default";
     <?php foreach ($lastWinners as $winner){ ?>
     <tr>
         <td><?= $winner["week"] ?>º Semana</td>
-        <td width="130px"><img src="<?= $winner["image"] ; ?>" class="img-competitor max-100"></td>
+        <td ><img src="<?= $winner["image"] ; ?>" class="img-competitor max-100"></td>
         <td><?= $winner["name"]; ?><br><?= $winner["email"] ?></td>
     </tr>
     <?php }?>
@@ -66,7 +66,7 @@ $this->layout = "default";
     <tr>
         <td class="text-center" width="130px;"><?= $king["position"] ?></td>
         <td><?= $king["name"]; ?><br><?= $king["email"] ?></td>
-        <td width="130px"><img src="<?= $king["image"] ; ?>" class="img-competitor max-100"></td>
+        <td ><img src="<?= $king["image"] ; ?>" class="img-competitor max-100"></td>
         <td class="text-center" width="130px;"><?= $king["votes"] ?></td>
     </tr>
     <?php }?>
