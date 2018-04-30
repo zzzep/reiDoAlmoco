@@ -100,23 +100,25 @@ class ApiController extends Controller {
     }
 
     public function sendEmail() {
-        if (helperTime::isBetweenTime(Configure::read("initial_time"), Configure::read("final_time"), $current_time)) {
-            $this->set("data", $this->setJsonResponse("Ainda não está no horário de encerramento de votação"));
-            return;
+        try {
+            if (helperTime::isBetweenTime(Configure::read("initial_time"), Configure::read("final_time"), helperTime::current_time())) {
+                throw new \Exception("Ainda não está no horário de encerramento de votação");
+            }
+            $model = new Votes();
+            $king = $model->getTodayKing();
+
+            $winnerModel = new EmailsWinners();
+            $winnerModel->saveWinner($king->id);
+
+            (new Email())->send("default", "naoresponda@reidoalmoco.com", $king->email);
+        } catch (\Exception $e) {
+            $this->set("data", $this->setJsonResponse($e->getMessage()));
         }
-        $model = new Votes();
-        $king = $model->getTodayKing();
-
-        $winnerModel = new EmailsWinners();
-        $winnerModel->saveWinner($king->id);
-
-        (new Email())->send("default", "naoresponda@reidoalmoco.com", $king->email);
     }
 
     public function vote() {
         try {
-            $current_time = helperTime::current_time();
-            if (!helperTime::isBetweenTime(Configure::read("initial_time"), Configure::read("final_time"), $current_time)) {
+            if (!helperTime::isBetweenTime(Configure::read("initial_time"), Configure::read("final_time"), helperTime::current_time())) {
                 $this->set("data", $this->setJsonResponse("Voto fora do horário estipulado"));
                 return;
             }

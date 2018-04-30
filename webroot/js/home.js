@@ -32,10 +32,12 @@ function sendEmailToWinner(id) {
         success: function (data) {
             var response = JSON.parse(data);
             $("#loading-image").hide();
+            alert(response.message);
         },
         error: function (XMLHttpRequest, textStatus, errorThrown) {
             console.log(XMLHttpRequest, textStatus, errorThrown);
             $("#loading-image").hide();
+            alert("Configurações de envio de email inválidas");
         }
     });
 }
