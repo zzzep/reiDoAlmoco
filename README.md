@@ -10,3 +10,6 @@ You can now either use your machine's webserver to view the default home page, o
 up the built-in webserver with:
 1. Run "bin/cake server -p 8765"
 2. Then visit `http://localhost:8765` to see the home page.
+
+To run the unit test:
+1. Run "vendor/bin/phpunit"
