@@ -23,6 +23,8 @@ use App\Model\Table\EmailsList;
 use App\Model\Table\Votes;
 use App\Model\Table\EmailsWinners;
 use App\Helper\Email;
+use App\Helper\DateTime as helperTime;
+use Cake\Core\Configure;
 
 /**
  * Application Controller
@@ -98,17 +100,26 @@ class ApiController extends Controller {
     }
 
     public function sendEmail() {
+        if (helperTime::isBetweenTime(Configure::read("initial_time"), Configure::read("final_time"), $current_time)) {
+            $this->set("data", $this->setJsonResponse("Ainda não está no horário de encerramento de votação"));
+            return;
+        }
         $model = new Votes();
         $king = $model->getTodayKing();
 
-        (new Email())->send("default", "naoresponda@reidoalmoco.com", $king->email);
-
         $winnerModel = new EmailsWinners();
         $winnerModel->saveWinner($king->id);
+
+        (new Email())->send("default", "naoresponda@reidoalmoco.com", $king->email);
     }
 
     public function vote() {
         try {
+            $current_time = helperTime::current_time();
+            if (!helperTime::isBetweenTime(Configure::read("initial_time"), Configure::read("final_time"), $current_time)) {
+                $this->set("data", $this->setJsonResponse("Voto fora do horário estipulado"));
+                return;
+            }
             $jsonData = $this->request->input('json_decode');
             if (!isset($jsonData->id)) {
                 throw new \Exception("Id não informado");

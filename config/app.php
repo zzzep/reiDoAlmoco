@@ -54,6 +54,8 @@ return [
      *   paths for plugins, view templates and locale files respectively.
      */
     "title" => env('TITLE', 'Rei do Almoço - by gfechio'),
+    "initial_time" => env('INITIAL_TIME', '10:00:00'),
+    "final_time" => env('FINAL_TIME', '12:00:00'),
     'App' => [
         'namespace' => 'App',
         'encoding' => env('APP_ENCODING', 'UTF-8'),

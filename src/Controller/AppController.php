@@ -56,7 +56,7 @@ class AppController extends Controller
     }
     
     public function home() {
-        
+
         $emailsModel = new EmailsList();
         $emails = $emailsModel->getEmails();
         $this->set("competitors", $emails);

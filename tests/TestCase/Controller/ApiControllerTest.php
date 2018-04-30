@@ -14,7 +14,7 @@
  */
 namespace App\Test\TestCase\Controller;
 
-use App\Controller\PagesController;
+use App\Controller\ApiController;
 use Cake\Core\App;
 use Cake\Core\Configure;
 use Cake\Http\Response;
@@ -28,14 +28,12 @@ use Cake\View\Exception\MissingTemplateException;
 class PagesControllerTest extends IntegrationTestCase
 {
     /**
-     * testMultipleGet method
+     * testGet method
      *
      * @return void
      */
-    public function testMultipleGet()
+    public function testGet()
     {
-        $this->get('/');
-        $this->assertResponseOk();
         $this->get('/');
         $this->assertResponseOk();
     }
@@ -47,10 +45,10 @@ class PagesControllerTest extends IntegrationTestCase
      */
     public function testDisplay()
     {
-        $this->get('/pages/home');
+        $this->get('/create-email');
         $this->assertResponseOk();
-        $this->assertResponseContains('CakePHP');
         $this->assertResponseContains('<html>');
+        $this->assertResponseContains('Rei do Almoço');
     }
 
     /**

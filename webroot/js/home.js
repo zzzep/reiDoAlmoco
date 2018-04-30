@@ -31,13 +31,11 @@ function sendEmailToWinner(id) {
         data: JSON.stringify(body),
         success: function (data) {
             var response = JSON.parse(data);
-            alert(response.message);
+            $("#loading-image").hide();
         },
         error: function (XMLHttpRequest, textStatus, errorThrown) {
-            alert("Erro inesperado!");
             console.log(XMLHttpRequest, textStatus, errorThrown);
+            $("#loading-image").hide();
         }
-    }).done(function () {
-        $("#loading-image").hide();
     });
 }
